@@ -1,0 +1,12 @@
+pandas 
+scikit-learn 
+scipy 
+xgboost 
+hyperopt 
+eli5 
+shap  
+matplotlib
+seaborn  
+feature_engine 
+imblearn
+keras_tuner
