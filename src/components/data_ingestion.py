@@ -1,19 +1,24 @@
-import os, sys
-sys.path.append('..')
+import sys
+
+sys.path.append("..")
 from dataclasses import dataclass
+
 import pandas as pd
+from pandas import DataFrame
+
 from src.components.config import DataIngestionConfig
 from src.utils.extractor import RarExtractor
-from pandas import DataFrame
+
 
 @dataclass
 class DataIngestor:
     """
     Handles data extraction and loading into a DataFrame.
     """
+
     config: DataIngestionConfig
 
-    def _extract_if_needed(self)->str:
+    def _extract_if_needed(self) -> str:
         """
         If the file is a .rar archive, extract it and return the CSV path.
         Otherwise, return the configured CSV path.
@@ -21,13 +26,14 @@ class DataIngestor:
         if self.config.path.lower().endswith("rar"):
             print("[INFO] RAR archive detected - extracting...")
             extractor = RarExtractor(
-                rar_path = self.config.path,
-                extract_to = self.config.extract_to,
-                output_filename = self.config.output_filename,
-                auto_rename = self.config.auto_rename
+                rar_path=self.config.path,
+                extract_to=self.config.extract_to,
+                output_filename=self.config.output_filename,
+                auto_rename=self.config.auto_rename,
             )
             return extractor.extract()
         return self.config.path
+
     def load_data(self) -> DataFrame:
         """
         Loads data into a pandas DataFrame after optional extraction.
@@ -50,8 +56,6 @@ class DataIngestor:
 # #     path: str
 # #     def __init__(self, path: str = "./data/dataset.csv"):
 # #         self.path = path
-
-
 
 
 # # def load_data() -> pd.DataFrame:

@@ -9,6 +9,7 @@ class RarExtractor:
     """
     Handles extraction of .rar files to a specified directory.
     """
+
     rar_path: str
     extract_to: str = "./data"
     output_filename: str = "dataset.csv"
@@ -17,7 +18,7 @@ class RarExtractor:
     def _resolve_versioned_filename(self) -> str:
         """
         Resolve a versioned filename if auto_rename is enabled.
-        This ensures that if the output file already exists, a new versioned 
+        This ensures that if the output file already exists, a new versioned
         filename is created.
         """
         base, ext = os.path.splitext(self.output_filename)

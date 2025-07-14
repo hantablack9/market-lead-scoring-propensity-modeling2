@@ -22,7 +22,7 @@ In this capstone project, you are required to analyze a dataset and build a mach
 
 ## 📂 Dataset
 
-**File:** `Purchase_Fraud_Data.csv`  
+**File:** `Purchase_Fraud_Data.csv`
 Each row represents a lead with detailed attributes about their interaction, behavior, and metadata regarding the lead acquisition and sales journey.
 
 ---

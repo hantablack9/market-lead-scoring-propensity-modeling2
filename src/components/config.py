@@ -8,6 +8,7 @@ class DataIngestionConfig:
     output_filename: str = "dataset.csv"
     auto_rename: bool = True
 
+
 @dataclass
 class DataPreprocessingConfig:
     path: str = "./src/data/dataset.csv"
@@ -15,12 +16,14 @@ class DataPreprocessingConfig:
     output_filename: str = "clean_data.csv"
     auto_rename: bool = True
 
+
 @dataclass
 class DataTransformationConfig:
     path: str = "./src/data/preprocessed/clean_data.csv"
     extract_to: str = "./src/data/transformed"
     output_filename: str = "transformed_data.csv"
     auto_rename: bool = True
+
 
 @dataclass
 class ModelTrainingConfig:
