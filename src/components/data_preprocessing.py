@@ -14,12 +14,12 @@ from src.components.config import DataPreprocessingConfig
 class DataPreprocessor:
     config: DataPreprocessingConfig
 
-    def load_data(self) -> DataFrame:
+    def load_data(self) -> pd.DataFrame:
         """
         Loads the raw CSV from config.path.
         """
         if not os.path.exists(self.config.path):
-            raise FileNotFoundError(f"[ERROR] File not found: {self.config.path}")
+            raise FileNotFoundError(f"[ERROR] File not found: {self.config.path}")  # noqa: TRY003
         return pd.read_csv(self.config.path, low_memory=False)
 
     def change_column_names(self, df: pd.DataFrame) -> pd.DataFrame:
@@ -49,7 +49,8 @@ class DataPreprocessor:
             "day_name": "opp_day_name",
             "hour": "opp_hour",
         }
-        return df.rename(columns=rename_map)
+        df = df.rename(columns=rename_map)
+        return df
 
     def data_cleaning(self, df: pd.DataFrame) -> pd.DataFrame:
         """
@@ -70,6 +71,21 @@ class DataPreprocessor:
 
         for feature in datetme:
             df[feature] = pd.to_datetime(df[feature], dayfirst=True, infer_datetime_format=True)
+
+        # Sales team's leystone metric for success is the conversion of customer status
+        # from "Engaged" to "Applications"
+        # I will create a new target column based on this conversion
+        target = "funnel_category"
+        subtarget = "stagename"
+        target_replace_dict = {
+            "Wasted_leads": "0",
+            "Engaged": "1",
+            "Payment Initiated": "2",
+            "Applications": "2",
+            "Enrolled": "2",
+        }
+        df["target_sales"] = df[target].replace(target_replace_dict)
+        df = df.drop(columns=[target])
         return df
 
     def save(self, df: pd.DataFrame) -> str:
