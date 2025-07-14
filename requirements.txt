@@ -2,11 +2,20 @@ pandas
 scikit-learn
 scipy
 xgboost
-hyperopt
+optuna
+optuna-dashboard
+lightgbm
 eli5
 shap
 matplotlib
 seaborn
-feature_engine
 imblearn
 keras_tuner
+mlflow
+pydantic
+seaborn
+pandas-profiling
+scikit-optimize
+pillow
+
+-e .
