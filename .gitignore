@@ -6,7 +6,7 @@ docs/source
 # or can be downloaded directly to the data directory.
 src/data/
 # duckdb_notebook_basic.ipynb
-# yellow_tripdata_2025-01.parquet
+yellow_tripdata_2025-01.parquet
 taxidbdemo.db
 
 # Byte-compiled / optimized / DLL files
