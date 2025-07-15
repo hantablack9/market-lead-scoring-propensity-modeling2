@@ -9,7 +9,6 @@ from pandas import DataFrame
 
 from src.components.config import DataPreprocessingConfig
 
-
 @dataclass
 class DataPreprocessor:
     config: DataPreprocessingConfig
@@ -68,26 +67,27 @@ class DataPreprocessor:
             "sales_end_",
             "sales_start_date",
         ]
-
         for feature in datetme:
             df[feature] = pd.to_datetime(df[feature], dayfirst=True, infer_datetime_format=True)
-
+        return df
+    def encode_target(self, df: pd.DataFrame) -> pd.DataFrame:
+        """
+        Encodes the target variable 'lead_status' into binary format.
+        """
         # Sales team's leystone metric for success is the conversion of customer status
         # from "Engaged" to "Applications"
         # I will create a new target column based on this conversion
         target = "funnel_category"
-        subtarget = "stagename"
         target_replace_dict = {
             "Wasted_leads": "0",
             "Engaged": "1",
             "Payment Initiated": "2",
             "Applications": "2",
-            "Enrolled": "2",
+            "Enrolled": "2"
         }
         df["target_sales"] = df[target].replace(target_replace_dict)
         df = df.drop(columns=[target])
         return df
-
     def save(self, df: pd.DataFrame) -> str:
         """
         Saves the cleaned dataframe to the configured output directory with optional versioning.

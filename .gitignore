@@ -5,6 +5,9 @@ docs/source
 # Large files - can be extracted to be in the data directory from compressed
 # or can be downloaded directly to the data directory.
 src/data/
+# duckdb_notebook_basic.ipynb
+# yellow_tripdata_2025-01.parquet
+taxidbdemo.db
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

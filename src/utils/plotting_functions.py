@@ -14,7 +14,12 @@ sns.set_style("darkgrid")
 sns.diverging_palette(h_neg=0, h_pos=355, s=100, l=50, sep=1, n=16, center="dark", as_cmap=False)
 plt.rcParams["figure.figsize"] = 15, 8
 
-def plot_barplot_pie(df: pd.DataFrame, target: str,suptitle: str | None = None,savepath: str | None = None) -> None:
+def plot_barplot_pie(
+    df: pd.DataFrame,
+    target: str,
+    suptitle: str | None = None,
+    savepath: str | None = None
+    ) -> None:
     """
     Plots a bar and pie chart for the target variable distribution.
     Saves the output to a file if savepath is provided, or defaults to ./assets/{target}_distribution.jpg
@@ -48,7 +53,7 @@ def plot_barplot_pie(df: pd.DataFrame, target: str,suptitle: str | None = None,s
     if suptitle is None:
         suptitle = f"{target} distribution"
     plt.suptitle(suptitle, fontdict={"fontsize": 10})
-    plt.subplots_adjust(top=0.85)
+    # plt.subplots_adjust(top=0.85)
     plt.show()
     plt.tight_layout()
 
@@ -66,10 +71,11 @@ def plot_barplot_pie(df: pd.DataFrame, target: str,suptitle: str | None = None,s
        
     else:
         savepath = f"./assets/{savepath}"
-    plt.savefig(savepath)
+    plt.savefig(savepath, format="jpg", dpi=300, bbox_inches="tight")
+    
+    # img = Image.open(savepath)
+    plt.show()
     plt.close()
-    img = Image.open(savepath)
-    img.show()
 
     print(f"[INFO] Saved plot to {savepath}")
 

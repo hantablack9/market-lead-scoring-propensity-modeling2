@@ -21,5 +21,7 @@ def main() -> None:
     print("[INFO] Data loaded. Shape:", df.shape)
 
 
+
+
 if __name__ == "__main__":
     main()
