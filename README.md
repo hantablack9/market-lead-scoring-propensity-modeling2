@@ -130,7 +130,7 @@ Deliver a well-performing, interpretable machine learning model that helps prior
 
 For any clarification, reach out via project collaboration channel or [email.](hanishpaturi1320@gmail.com).
 
-
+<!-- 
 ## Getting started with your project
 
 ### 1. Create a New Repository
@@ -186,4 +186,4 @@ To enable the code coverage reports, see [here](https://fpgmaas.github.io/cookie
 
 ---
 
-Repository initiated with [fpgmaas/cookiecutter-uv](https://github.com/fpgmaas/cookiecutter-uv).
+Repository initiated with [fpgmaas/cookiecutter-uv](https://github.com/fpgmaas/cookiecutter-uv). -->
