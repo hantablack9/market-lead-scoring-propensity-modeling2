@@ -6,6 +6,22 @@ import rarfile
 
 @dataclass
 class RarExtractor:
+    RarExtractor
+    A utility class for extracting .csv files from .rar archives to a specified directory.
+    Attributes:
+        rar_path (str): Path to the .rar archive file.
+        extract_to (str): Directory where the extract file will be saved. Defaults to "./data".
+        output_filename (str): Desired name for the extracted CSV file. Defaults to "dataset.csv". # type: ignore
+        auto_rename (bool): If True, automatically renames the output file to avoid overwriting existing files.
+    Methods:
+        _resolve_versioned_filename():
+            Determines a unique filename by appending a version number if a file with the desired name already exists.
+        extract():
+            Extracts the first .csv file found in the .rar archive to the target directory.
+            If auto_rename is enabled, ensures the output filename does not overwrite existing files.
+            Returns the path to the extracted CSV file.
+            Raises FileNotFoundError if no .csv file is found in the archive.
+            Raises FileExistsError if auto_rename is False and the output file already exists.
     """
     Handles extraction of .rar files to a specified directory.
     """

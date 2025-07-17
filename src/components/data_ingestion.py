@@ -9,7 +9,6 @@ from pandas import DataFrame
 from src.components.config import DataIngestionConfig
 from src.utils.extractor import RarExtractor
 
-
 @dataclass
 class DataIngestor:
     """
